@@ -63,16 +63,14 @@ const Gallery = () => {
 
   return (
     <>
-      <section className='max-w-[720px] w-full  h-full relative '>
-        <div className="pt-[20px] pb-[22px] px-[54px] bg-cardHo rounded-[18.89px] relative shadow-custom-card ">
-
+      <section className='max-w-[720px] w-full  h-full relative'>
+        <div className="pt-[20px] pb-[22px] px-[54px] bg-cardHo rounded-[18.89px] relative shadow-custom-card min-h-[330px]">
           <div className="flex items-center justify-between">
             <button className='h-[62px] w-[149px] bg-black text-white rounded-[20px] font-poppins text-[20px] leading-[30px]'>Gallery</button>
             <div className="flex gap-9">
               <button
                 onClick={handleButtonClick}
                 className="w-[131px] h-[46px] text-[12px] leading-[6.29px] font-extrabold text-white rounded-[104px] shadow-custom-inner shadow-custom-outer text-center font-plusJak">
-
                 <span className="text-[12.1px] -translate-y-[1px] inline-block mr-1">+</span>
                 Add image
               </button>
@@ -82,7 +80,6 @@ const Gallery = () => {
                   disabled={currentIndex === 0}
                   className={`px-4 py-2 shadow-sm-btn-shadow text-white rounded-full transition-all duration-200 bg-sm-btn-gradient ${currentIndex === 0 ? "hover:scale-100" : "hover:scale-110"}`}>
                   <FaArrowLeft className='text-[#6f787c]' />
-
                 </button>
                 <button
                   onClick={handleNext}
@@ -93,11 +90,9 @@ const Gallery = () => {
               </div>
             </div>
           </div>
-
           <div className="absolute left-0 top-1">
             <CardSideDock />
           </div>
-
           <div className="flex gap-[20px] mt-[47px] ">
             {getVisibleImages().map((src, index) => (
               <div className="relative h-[179px] w-[190px] "
@@ -107,10 +102,9 @@ const Gallery = () => {
                   src={src}
                   fill
                   alt={`Gallery Image - ${index + 1}`}
-                  className='rounded-[24px] object-cover grayscale hover:grayscale-0 hover:scale-x-[1.15] hover:scale-y-[1.14] duration-700 ease-in-out transform transition-all hover:rotate-[-1deg] h-auto w-auto'
+                  className='rounded-[24px] object-cover grayscale hover:grayscale-0 hover:scale-x-[1.15] hover:scale-y-[1.14] duration-700 ease-in-out transform transition-all hover:rotate-[-1deg] '
                 />
               </div>
-
             ))}
           </div>
         </div>
@@ -125,7 +119,6 @@ const Gallery = () => {
             onClose={handleClose}
           />
         )
-
       }
     </>
   )

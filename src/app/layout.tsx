@@ -26,11 +26,11 @@ export default function RootLayout({
           fontSans.className,
         )}
       >
-        <NextUiProvider>
+        {/* <NextUiProvider> */}
           <main className="max-w-screen-1728 w-full mx-auto">
             {children}
           </main>
-        </NextUiProvider>
+        {/* </NextUiProvider> */}
       </body>
     </html>
   );

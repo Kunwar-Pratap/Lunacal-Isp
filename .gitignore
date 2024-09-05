@@ -52,3 +52,4 @@ next-env.d.ts
 *.swo
 .sublime-project
 .sublime-workspace
+.env

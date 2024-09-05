@@ -55,6 +55,8 @@ const FeaturesTab = () => {
         <div className="absolute left-0 top-0">
           <CardSideDock />
         </div>
+        <div className="absolute right-[13px] top-[111px] h-16 w-2 bg-gradient-to-t from-[#4A4E54] to-[#888989] rounded-full shadow-[2px_2px_3px_1px_#23222299] " ></div>
+
 
         {/* <-------------- Tab Content Start ------------> */}
 

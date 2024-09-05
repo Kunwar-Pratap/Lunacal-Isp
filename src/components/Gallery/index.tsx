@@ -80,14 +80,14 @@ const Gallery = () => {
                 <button
                   onClick={handlePrevious}
                   disabled={currentIndex === 0}
-                  className={`px-4 py-2 shadow-sm-btn-shadow text-white rounded-full ${currentIndex === 0 ? "bg-red-500" : ""}`}>
+                  className={`px-4 py-2 shadow-sm-btn-shadow text-white rounded-full transition-all duration-200 bg-sm-btn-gradient ${currentIndex === 0 ? "hover:scale-100" : "hover:scale-110"}`}>
                   <FaArrowLeft className='text-[#6f787c]' />
 
                 </button>
                 <button
                   onClick={handleNext}
                   disabled={currentIndex === images.length - 1}
-                  className={`px-4 py-2  shadow-sm-btn-shadow text-white rounded-full ${currentIndex === images.length - 1 ? "bg-red-500" : "bg-sm-btn-gradient"}`}>
+                  className={`px-4 py-2 shadow-sm-btn-shadow bg-sm-btn-gradient text-white rounded-full ${currentIndex === images.length - 1 ? "hover:scale-100" : "hover:scale-110"}`}>
                   <FaArrowRight className='text-[#6f787c]' />
                 </button>
               </div>

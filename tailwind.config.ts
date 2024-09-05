@@ -20,8 +20,6 @@ const config: Config = {
         cardHo: 'rgba(54, 60, 67, 1)',
         textHo: '#969696',
         hrHo: '#363C43',
-        // scrollbarThumb: '#484848', // Customize the scrollbar thumb color
-        // scrollbarTrack: 'transparent', // Make the track transparent
       },
       boxShadow: {
         'custom-inner': 'inset 0 3.26px 3.26px rgba(255, 255, 255, 0.15), inset 0 0 48.91px rgba(255, 255, 255, 0.05)',
@@ -49,8 +47,6 @@ const config: Config = {
   },
   plugins: [
     nextui(),
-    require('tailwind-scrollbar'),
-    require('tailwind-scrollbar-hide'),
   ],
 };
 export default config;

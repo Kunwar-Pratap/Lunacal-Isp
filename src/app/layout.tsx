@@ -22,15 +22,15 @@ export default function RootLayout({
     >
       <body
         className={clsx(
-          "min-h-screen antialiased",
+          "min-h-screen antialiased bg-black",
           fontSans.className,
         )}
       >
-        {/* <NextUiProvider> */}
-          <main className="max-w-screen-1728 w-full mx-auto">
+        <NextUiProvider>
+          <main className="max-w-screen-1728 w-full mx-auto h-full">
             {children}
           </main>
-        {/* </NextUiProvider> */}
+        </NextUiProvider>
       </body>
     </html>
   );

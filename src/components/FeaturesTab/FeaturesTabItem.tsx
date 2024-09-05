@@ -5,7 +5,7 @@ const FeaturesTabItem = ({ featureTab }: { featureTab: TFeaturesTab }) => {
   const { desc1, desc2 } = featureTab;
 
   return (
-    <div className='pt-10 flex flex-col gap-7 overflow-y-auto scrollbar-thin scrollbar-track-transparent  '>
+    <div className='pt-10 flex flex-col gap-7  '>
       <p className="text-gray-300 text-xl leading-[25.2px] font-normal font-plusJak">
         {desc1}
       </p>

@@ -1,69 +1,93 @@
 "use client"
 
+import { db } from '@/utils/firebase';
+import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import CardSideDock from '../CardSideDock';
 import HrLine from '../HrLine';
+import ImageUploadModal from '../ImageUploadModal';
 
 const Gallery = () => {
+  const [images, setImages] = useState<string[]>([]);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const [images, setImages] = useState([
-    '/assets/images/image.png',
-    '/assets/images/image.png',
-    '/assets/images/image.png',
-  ]);
+  const fetchImages = async () => {
+    try {
+      const q = query(collection(db, "userImages"), orderBy("createdAt", "desc"));
+      const querySnapshot = await getDocs(q);
+      const fetchedImages: string[] = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.imageUrl) fetchedImages.push(data.imageUrl);
+      });
+      setImages(fetchedImages);
+    } catch (error) {
+      console.error("Error fetching images:", error);
+    }
+  };
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(() => {
+    fetchImages();
+  }, []);
 
-  const handleAddImage = () => {
-    const newImage = prompt('Enter the URL of new image');
-    if (newImage) setImages([...images, newImage]);
-  }
+  const handleButtonClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsModalOpen(false);
+    fetchImages();
+  };
 
   const handlePrevious = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
-  }
+  };
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  }
+  };
 
   const getVisibleImages = () => {
+    if (images.length === 0) return [];
     return [
       images[currentIndex],
       images[(currentIndex + 1) % images.length],
       images[(currentIndex + 2) % images.length],
-    ]
-  }
+    ];
+  };
 
   return (
     <>
-      <section className='max-w-[720px] w-full  h-full relative'>
-        <div className="pt-[20px] pb-[22px] px-[54px] bg-cardHo rounded-[18.89px] relative">
+      <section className='max-w-[720px] w-full  h-full relative '>
+        <div className="pt-[20px] pb-[22px] px-[54px] bg-cardHo rounded-[18.89px] relative shadow-custom-card ">
 
           <div className="flex items-center justify-between">
             <button className='h-[62px] w-[149px] bg-black text-white rounded-[20px] font-poppins text-[20px] leading-[30px]'>Gallery</button>
-            <div className="flex gap-4">
+            <div className="flex gap-9">
               <button
-                onClick={handleAddImage}
+                onClick={handleButtonClick}
                 className="w-[131px] h-[46px] text-[12px] leading-[6.29px] font-extrabold text-white rounded-[104px] shadow-custom-inner shadow-custom-outer text-center font-plusJak">
 
                 <span className="text-[12.1px] -translate-y-[1px] inline-block mr-1">+</span>
                 Add image
               </button>
-              <div className="flex gap-3">
+              <div className="flex gap-[19px]">
                 <button
                   onClick={handlePrevious}
-                  className="px-4 py-2 bg-sm-btn-gradient shadow-sm-btn-shadow text-white rounded-full">
+                  disabled={currentIndex === 0}
+                  className={`px-4 py-2 shadow-sm-btn-shadow text-white rounded-full ${currentIndex === 0 ? "bg-red-500" : ""}`}>
                   <FaArrowLeft className='text-[#6f787c]' />
 
                 </button>
                 <button
                   onClick={handleNext}
-                  className="px-4 py-2 bg-sm-btn-gradient shadow-sm-btn-shadow text-white rounded-full">
+                  disabled={currentIndex === images.length - 1}
+                  className={`px-4 py-2  shadow-sm-btn-shadow text-white rounded-full ${currentIndex === images.length - 1 ? "bg-red-500" : "bg-sm-btn-gradient"}`}>
                   <FaArrowRight className='text-[#6f787c]' />
                 </button>
               </div>
@@ -94,6 +118,15 @@ const Gallery = () => {
           <HrLine />
         </div>
       </section>
+      {
+        isModalOpen && (
+          <ImageUploadModal
+            isOpen={isModalOpen}
+            onClose={handleClose}
+          />
+        )
+
+      }
     </>
   )
 }

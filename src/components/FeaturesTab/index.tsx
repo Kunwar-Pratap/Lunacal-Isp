@@ -11,14 +11,14 @@ const FeaturesTab = () => {
   const [currentTab, setCurrentTab] = useState<string>('tabOne');
 
   return (
-    <section className='relative max-w-[720px]  w-full '>
-      <div className="px-[53px] py-[17px] bg-cardHo rounded-[18.89px] relative">
+    <section className='relative max-w-[720px] w-full'>
+      <div className="px-[53px] py-[17px] bg-cardHo rounded-[18.89px] relative shadow-custom-card">
 
         <div className=" max-w-[614px] w-full rounded-[23px] bg-tabHo p-1">
 
           {/* <-------------- Tab Menu Start ------------> */}
 
-          <div className="max-w-[597px] mx-auto flex h-[62px] gap-[6px] justify-between">
+          <div className="max-w-[597px] w-full mx-auto flex h-[62px] gap-[6px] justify-between">
 
             <div className="w-1/3 h-full">
               <button

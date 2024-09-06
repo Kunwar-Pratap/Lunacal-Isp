@@ -27,7 +27,7 @@ export default function RootLayout({
         )}
       >
         <NextUiProvider>
-          <main className="max-w-screen-1728 w-full mx-auto h-full">
+          <main className="max-w-screen-1728 w-full mx-auto h-full px-2 overflow-auto">
             {children}
           </main>
         </NextUiProvider>

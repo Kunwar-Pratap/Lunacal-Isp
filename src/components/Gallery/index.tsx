@@ -63,18 +63,18 @@ const Gallery = () => {
 
   return (
     <>
-      <section className='max-w-[720px] w-full  h-full relative'>
-        <div className="pt-[20px] pb-[22px] px-[54px] bg-cardHo rounded-[18.89px] relative shadow-custom-card min-h-[330px]">
+      <section className='md:max-w-[720px] w-full  h-full relative'>
+        <div className="pt-[20px] pb-[22px] sc-1390:px-[53px] xl:pr-11 lg:pr-8 pr-3 pl-[46px] bg-cardHo rounded-[18.89px] relative shadow-custom-card min-h-[330px] overflow-hidden">
           <div className="flex items-center justify-between">
-            <button className='h-[62px] w-[149px] bg-black text-white rounded-[20px] font-poppins text-[20px] leading-[30px]'>Gallery</button>
-            <div className="flex gap-9">
+            <button className='h-[62px] xl:w-[149px] w-fit lg:px-6 px-4 bg-black text-white rounded-[20px] font-poppins xl:text-[20px] lg:text-[18px] text-[15px] xl:leading-[30px] leading-5'>Gallery</button>
+            <div className="flex xl:gap-9 lg:gap-5 gap-3">
               <button
                 onClick={handleButtonClick}
-                className="w-[131px] h-[46px] text-[12px] leading-[6.29px] font-extrabold text-white rounded-[104px] shadow-custom-inner shadow-custom-outer text-center font-plusJak">
-                <span className="text-[12.1px] -translate-y-[1px] inline-block mr-1">+</span>
+                className="xl:w-[131px] w-fit lg:px-6 px-3 h-[46px] lg:text-[12px] text-[11px] leading-[6.29px] font-extrabold text-white rounded-[104px] shadow-custom-combined-btn text-center font-plusJak">
+                <span className="lg:text-[12.1px] text-[11.1px] -translate-y-[1px] inline-block mr-1">+</span>
                 Add image
               </button>
-              <div className="flex gap-[19px]">
+              <div className="flex xl:gap-[19px] lg:gap-[15px] gap-2">
                 <button
                   onClick={handlePrevious}
                   disabled={currentIndex === 0}
@@ -93,9 +93,9 @@ const Gallery = () => {
           <div className="absolute left-0 top-1">
             <CardSideDock />
           </div>
-          <div className="flex gap-[20px] mt-[47px] ">
+          <div className="flex xl:gap-[20px] lg:gap-4 gap-3 mt-[47px] ">
             {getVisibleImages().map((src, index) => (
-              <div className="relative h-[179px] w-[190px] "
+              <div className="relative h-[179px] xl:w-[190px] w-full "
                 key={index}
               >
                 <Image

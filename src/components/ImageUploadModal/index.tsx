@@ -1,5 +1,7 @@
 "use client";
 
+import { validateImage } from "@/lib/validations";
+import { db, storage } from "@/utils/firebase";
 import { Button } from "@nextui-org/button";
 import {
   Modal,
@@ -14,8 +16,6 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { v4 as uuidv4 } from "uuid";
-import { validateImage } from "@/lib/validations";
-import { db, storage } from "@/utils/firebase";
 
 interface Errors {
   image?: string;
@@ -152,6 +152,26 @@ const ImageUploadModal = ({ isOpen, onClose }: any) => {
         base: "border-[#292f46] bg-cardHo text-textHo",
         header: "border-b-[1px] border-gray-400/40",
         footer: "border-t-[1px] border-gray-400/40",
+      }}
+      motionProps={{
+        variants: {
+          enter: {
+            y: 0,
+            opacity: 1,
+            transition: {
+              duration: 0.3,
+              ease: "easeOut",
+            },
+          },
+          exit: {
+            y: -20,
+            opacity: 0,
+            transition: {
+              duration: 0.2,
+              ease: "easeIn",
+            },
+          },
+        },
       }}
     >
       <ModalContent>
